@@ -6,7 +6,7 @@ import History from "./pages/History";
 import Favourites from "./pages/Favourites";
 import Navbar from "./components/Navbar";
 import { getRandomCocktail } from "./api/cocktailDB";
-
+import "./App.css";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
