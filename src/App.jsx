@@ -2,7 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Daily from "./pages/Daily";
-import History from "./pages/History";
+import Search from "./pages/Search";
 import Favourites from "./pages/Favourites";
 import Navbar from "./components/Navbar";
 // import { getRandomCocktail } from "./api/cocktailDB";
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/daily" element={<Daily />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/favourites" element={<Favourites />} />
         </Routes>
       </div>
