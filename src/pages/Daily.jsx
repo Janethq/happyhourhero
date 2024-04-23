@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 // import { getRandomCocktail } from "../api/cocktailDB";
 
 function Daily() {
-  
   const [cocktail, setCocktail] = useState(null);
 
   const fetchData = async () => {
@@ -29,12 +28,14 @@ function Daily() {
   return (
     <>
       <div>
-      
         {cocktail && (
           <div key={cocktail.drinks[0].idDrink}>
             <h2>Name: {cocktail.drinks[0].strDrink}</h2>
             <img src={cocktail.drinks[0].strDrinkThumb} />
+            <p>{cocktail.drinks[0].strInstructions}</p>
+            <br />
             <button onClick={fetchData}>ANOTHER DRINK</button>
+            <button>Favourite</button>
           </div>
         )}
       </div>
