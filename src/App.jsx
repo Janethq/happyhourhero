@@ -1,13 +1,14 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Daily from "./pages/Daily";
-import Search from "./pages/Search";
+import History from "./pages/History";
 import Favourites from "./pages/Favourites";
 import Navbar from "./components/Navbar";
-// 
+import { getRandomCocktail } from "./api/cocktailDB";
+
 import "./App.css";
-//global lvl here
+
 const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 const response = await fetch(url, { method: "GET" });
@@ -15,18 +16,18 @@ const test = await response.json();
 console.log(test);
 
 function App() {
-  // const [cocktailData, setCocktailData] = useState(null);
+  const [cocktailData, setCocktailData] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchRandomCocktail = async () => {
-  //     const cocktail = await getRandomCocktail();
-  //      console.log(cocktail);
-  //     setCocktailData(cocktail);
-  //   };
-  //   if (cocktailData === null) {
-  //     fetchRandomCocktail();
-  //   }
-  // }, []); //empty []= on load
+  useEffect(() => {
+    const fetchRandomCocktail = async () => {
+      const cocktail = await getRandomCocktail();
+      // console.log(cocktail);
+      setCocktailData(cocktail);
+    };
+    if (cocktailData === null) {
+      fetchRandomCocktail();
+    }
+  }, ); //empty []= on load
 
   return (
     <main>
@@ -36,7 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/daily" element={<Daily />} />
-          <Route path="/history" element={<Search />} />
+          <Route path="/history" element={<History />} />
           <Route path="/favourites" element={<Favourites />} />
         </Routes>
       </div>
