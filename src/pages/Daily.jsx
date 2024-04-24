@@ -24,7 +24,13 @@ function Daily() {
       fetchData();
     }
   }, [cocktail]);
-  //WHAIIIIII
+
+  //unordered ingredients list
+  //key = strIngredient (unique key)&& value !== null => return value
+  //else, dont return anything => null
+  //access object: cocktail.drinks[0].strIngredient
+  //use .map to generate an array of ingredients and put each of them in list format
+
   return (
     <>
       <div>
@@ -32,6 +38,17 @@ function Daily() {
           <div key={cocktail.drinks[0].idDrink}>
             <h2>Name: {cocktail.drinks[0].strDrink}</h2>
             <img src={cocktail.drinks[0].strDrinkThumb} />
+            <ul className="ingredientList">
+              {Object.keys(cocktail.drinks[0]).map((key) => {
+                if (
+                  key.startsWith("strIngredient") &&
+                  cocktail.drinks[0][key]
+                ) {
+                  return <li key={key}>{cocktail.drinks[0][key]}</li>;
+                }
+                return null;
+              })}
+            </ul>
             <p>{cocktail.drinks[0].strInstructions}</p>
             <br />
             <button onClick={fetchData}>ANOTHER DRINK</button>

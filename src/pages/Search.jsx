@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import Cocktail from "./Cocktail";
 
 function Search() {
+  //take in user input
   const [ingredient, setIngredient] = useState("");
+  //find the cocktails
   const [cocktails, setCocktails] = useState([]);
 
   useEffect(() => {
@@ -13,7 +15,8 @@ function Search() {
       const data = await response.json();
       setCocktails(data.drinks);
     };
-
+    
+    //if theres an ingredient, fetch data from api
     if (ingredient) {
       fetchData();
     }
@@ -28,15 +31,14 @@ function Search() {
             type="text"
             id="ingredient"
             value={ingredient}
-            onChange={(e) => setIngredient(e.target.value)}
+            onChange={(e) => setIngredient(e.target.value)} //take value from input box
           />
         </label>
       </form>
       <ul>
-        {cocktails &&
-          cocktails.map((cocktail) => (
-            <Cocktail key={cocktail.idDrink} cocktail={cocktail} />
-          ))}
+        {cocktails.map((cocktail) => (
+          <Cocktail key={cocktail.idDrink} cocktail={cocktail} />
+        ))}
       </ul>
     </div>
   );

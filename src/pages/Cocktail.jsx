@@ -5,6 +5,7 @@ function Cocktail({ cocktail }) {
       <img src={cocktail.strDrinkThumb} />
       <p>{cocktail.strInstructions}</p>
       <br />
+      
       <button>Favourite</button>
     </div>
   );
