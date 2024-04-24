@@ -29,6 +29,7 @@ function App() {
   // }, []); //empty []= on load
 
   return (
+    
     <main>
       <Navbar />
       <div id="display-container">

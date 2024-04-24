@@ -9,6 +9,6 @@ export async function getRandomCocktail() {
 
   const response = await fetch(url, { method: "GET" });
   const cocktailResponse = await response.json();
-  console.log(cocktailResponse);
   return cocktailResponse.drinks[0];
 }
+
