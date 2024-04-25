@@ -7,6 +7,7 @@ function Cocktail({ cocktail }) {
       fields: {
         name: cocktail.strDrink,
         cocktailId: cocktail.idDrink,
+        cocktailImg: cocktail.strDrinkThumb,
       },
     };
     const options = {
