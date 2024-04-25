@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import FavouriteItem from "../components/FavouriteItem";
 
 function Favourites() {
   const [favouritesList, setFavouritesList] = useState([]);
@@ -27,10 +28,11 @@ function Favourites() {
     <>
       <div>
         {favouritesList.map((item) => (
-          <div key={item.id}>
-            <h2>{item.fields.name}</h2>
-            <img src={item.fields.cocktailImg}/>
-          </div>
+          <FavouriteItem
+            key={item.id}
+            item={item}
+            setFavouritesList={setFavouritesList}
+          />
         ))}
       </div>
     </>

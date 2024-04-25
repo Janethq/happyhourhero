@@ -1,13 +1,19 @@
 import { useState } from "react";
 import Cocktail from "./Cocktail";
+import ModalComponent from "../components/ModalComponent";
 
 function Search() {
+  // controls modal
+  const [open, setOpen] = useState(false);
+  //model opens here
+  const handleOpen = () => setOpen(true);
+
   //take in user input
   const [ingredient, setIngredient] = useState("");
   //find the cocktails
   const [cocktails, setCocktails] = useState([]);
   const fetchData = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log("fetchData");
     try {
       const response = await fetch(
@@ -22,25 +28,30 @@ function Search() {
   };
 
   return (
-    <div>
-      <form onSubmit={fetchData}>
-        <label htmlFor="ingredient">
-          Search drink:
-          <input
-            type="text"
-            id="ingredient"
-            value={ingredient}
-            onChange={(e) => setIngredient(e.target.value)} //take value from input box
-          />
-          <button type="submit">Search</button>
-        </label>
-      </form>
-      <ul>
-        {cocktails.map((cocktail) => (
-          <Cocktail key={cocktail.idDrink} cocktail={cocktail} />
-        ))}
-      </ul>
-    </div>
+    <>
+      <div>
+        <form onSubmit={fetchData}>
+          <label htmlFor="ingredient">
+            Search drink:
+            <input
+              type="text"
+              id="ingredient"
+              value={ingredient}
+              onChange={(e) => setIngredient(e.target.value)} //take value from input box
+            />
+            <button type="submit">Search</button>
+          </label>
+        </form>
+        <ul>
+          {cocktails.map((cocktail) => (
+            <div onClick={handleOpen} key={cocktail.idDrink}>
+              <Cocktail cocktail={cocktail} />
+            </div>
+          ))}
+        </ul>
+      </div>
+      <ModalComponent open={open} setOpen={setOpen} />
+    </>
   );
 }
 

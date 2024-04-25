@@ -26,7 +26,7 @@ const postAirtable = async () => {
   return (
     <div>
       <h2>Name: {cocktail.strDrink}</h2>
-      <img src={cocktail.strDrinkThumb} />
+      <img src={cocktail.strDrinkThumb} width='300' />
       <p>{cocktail.strInstructions}</p>
       <br />
 
