@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import FavouriteItem from "../components/FavouriteItem";
+import.meta.env.VITE_AIRTABLE_API_KEY;
 
 function Favourites() {
   const [favouritesList, setFavouritesList] = useState([]);

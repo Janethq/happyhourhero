@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getRandomCocktail } from "../api/cocktailDB";
 import IngredientsList from "../components/IngredientsList";
+import.meta.env.VITE_AIRTABLE_API_KEY;
+
 function Daily() {
   const [cocktail, setCocktail] = useState(null);
   const fetchAndSetCocktail = async () => {
