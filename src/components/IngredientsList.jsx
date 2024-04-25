@@ -1,17 +1,20 @@
+import CocktailIngredientItem from "./CocktailIngredientItem";
 
-import CocktailIngredientItem from './CocktailIngredientItem';
-
-function IngredientsList({cocktail}) {
+function IngredientsList({ cocktail }) {
   return (
     <ul className="ingredientList">
       {Object.keys(cocktail).map((key) => {
         if (key.startsWith("strIngredient") && cocktail[key]) {
-          <CocktailIngredientItem ingredient={cocktail[key]} />
+          // console.log(cocktail[key]);
+          console.log("string");
+          return (
+            <CocktailIngredientItem key={key} ingredient={cocktail[key]} />
+          );
         }
         return null;
       })}
     </ul>
-  )
+  );
 }
 
-export default IngredientsList
+export default IngredientsList;

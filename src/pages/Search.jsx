@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Cocktail from "./Cocktail";
 
 function Search() {
@@ -6,25 +6,24 @@ function Search() {
   const [ingredient, setIngredient] = useState("");
   //find the cocktails
   const [cocktails, setCocktails] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async (e) => {
+    e.preventDefault()
+    console.log("fetchData");
+    try {
       const response = await fetch(
         `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${ingredient}`
       );
       const data = await response.json();
+      console.log(data.drinks);
       setCocktails(data.drinks);
-    };
-    
-    //if theres an ingredient, fetch data from api
-    if (ingredient) {
-      fetchData();
+    } catch (error) {
+      console.log(error);
     }
-  }, [ingredient]);
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={fetchData}>
         <label htmlFor="ingredient">
           Search drink:
           <input
@@ -33,6 +32,7 @@ function Search() {
             value={ingredient}
             onChange={(e) => setIngredient(e.target.value)} //take value from input box
           />
+          <button type="submit">Search</button>
         </label>
       </form>
       <ul>
