@@ -29,6 +29,7 @@ function Favourites() {
         {favouritesList.map((item) => (
           <div key={item.id}>
             <h2>{item.fields.name}</h2>
+            <img src={item.fields.cocktailImg}/>
           </div>
         ))}
       </div>

@@ -16,6 +16,7 @@ function Daily() {
       fields: {
         name: cocktail.strDrink,
         cocktailId: cocktail.idDrink,
+        cocktailImg: cocktail.strDrinkThumb,
       },
     };
     const options = {
