@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import FavouriteItem from "../components/FavouriteItem";
 import.meta.env.VITE_AIRTABLE_API_KEY;
 
 function Favourites() {
@@ -29,11 +28,11 @@ function Favourites() {
     <>
       <div>
         {favouritesList.map((item) => (
-          <FavouriteItem
-            key={item.id}
-            item={item}
-            setFavouritesList={setFavouritesList}
-          />
+            <div key={item.id}>
+      <h2>{item.fields.name}</h2>
+      <img src={item.fields.cocktailImg} />
+    </div>
+         
         ))}
       </div>
     </>
