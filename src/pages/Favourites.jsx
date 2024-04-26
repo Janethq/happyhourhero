@@ -23,6 +23,8 @@ function Favourites() {
     fetchAirtable();
   }, []);
 
+  //handling remove button
+  //add recordID field in airtable to pass as argument
   const rmvFav = async (recordID) => {
     const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201/${recordID}`;
     const options = {
@@ -36,6 +38,7 @@ function Favourites() {
     const airtableResponse = response.json();
     console.log(airtableResponse);
     setFavouritesList(
+      //remove those with the ID that is tagged with unfavourited drink
       favouritesList.filter((item) => item.fields.recordID !== recordID)
     );
   };
@@ -48,6 +51,7 @@ function Favourites() {
             <h2>{item.fields.name}</h2>
             <img src={item.fields.cocktailImg} />
             <br />
+            {/* anon function to remove whatever is passed in which is item.fields.recordID */}
             <button onClick={() => rmvFav(item.fields.recordID)}>
               Remove from Favourite
             </button>
