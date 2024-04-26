@@ -23,16 +23,35 @@ function Favourites() {
     fetchAirtable();
   }, []);
 
+  const rmvFav = async (recordID) => {
+    const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201/${recordID}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+      },
+    };
+    const response = await fetch(url, options);
+    const airtableResponse = response.json();
+    console.log(airtableResponse);
+    setFavouritesList(
+      favouritesList.filter((item) => item.fields.recordID !== recordID)
+    );
+  };
+
   return (
-    //retrieve the data here
     <>
       <div>
         {favouritesList.map((item) => (
-            <div key={item.id}>
-      <h2>{item.fields.name}</h2>
-      <img src={item.fields.cocktailImg} />
-    </div>
-         
+          <div key={item.id}>
+            <h2>{item.fields.name}</h2>
+            <img src={item.fields.cocktailImg} />
+            <br />
+            <button onClick={() => rmvFav(item.fields.recordID)}>
+              Remove from Favourite
+            </button>
+          </div>
         ))}
       </div>
     </>

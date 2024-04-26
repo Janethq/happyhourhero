@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Cocktail from "./Cocktail";
+import Cocktail from "../components/Cocktail";
 import ModalComponent from "../components/ModalComponent";
 
 function Search() {
