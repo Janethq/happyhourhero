@@ -52,9 +52,7 @@ function Favourites() {
             <img src={item.fields.cocktailImg} />
             <br />
             {/* anon function to remove whatever is passed in which is item.fields.recordID */}
-            <button onClick={() => rmvFav(item.fields.recordID)}>
-              Remove from Favourite
-            </button>
+            <button onClick={() => rmvFav(item.fields.recordID)}>❌ Remove</button>
           </div>
         ))}
       </div>

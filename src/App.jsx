@@ -1,35 +1,14 @@
-// import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Daily from "./pages/Daily";
 import Search from "./pages/Search";
 import Favourites from "./pages/Favourites";
 import Navbar from "./components/Navbar";
-// import { getRandomCocktail } from "./api/cocktailDB";
 import "./App.css";
 
-// const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-
-// const response = await fetch(url, { method: "GET" });
-// const test = await response.json();
-// console.log(test);
-
 function App() {
-  // const [cocktailData, setCocktailData] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchRandomCocktail = async () => {
-  //     const cocktail = await getRandomCocktail();
-  //     // console.log(cocktail);
-  //     setCocktailData(cocktail);
-  //   };
-  //   if (cocktailData === null) {
-  //     fetchRandomCocktail();
-  //   }
-  // }, []); //empty []= on load
 
   return (
-    
     <main>
       <Navbar />
       <div id="display-container">

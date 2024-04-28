@@ -7,7 +7,6 @@ function Search() {
   const [open, setOpen] = useState(false);
   //model opens here
   const handleOpen = () => setOpen(true);
-
   //take in user input
   const [ingredient, setIngredient] = useState("");
   //find the cocktails
