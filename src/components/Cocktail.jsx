@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 function Cocktail({ cocktail, handleOpen, setModalData}) {
   //state for whether a drink is favourited
   const [isFavourited, setIsFavourited] = useState({});
-  console.log(isFavourited);
-  console.log(handleOpen);
   const postAirtable = async () => {
     const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201`;
     const dataObj = {

@@ -20,7 +20,7 @@ function ModalComponent({ setOpen, open, modalData, setModalData }) {
   const handleClose = () => {
     setOpen(false);
     //reset back to initial state
-    setModalData({})
+    setModalData({});
   };
 
   return (
@@ -31,13 +31,15 @@ function ModalComponent({ setOpen, open, modalData, setModalData }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        { modalData&& <Box sx={style}>
-          <h2>Name: {modalData?.strDrink}</h2>
-          <img src={modalData?.strDrinkThumb} width='200' />
-          {/* prop is cocktail, using modalData*/}
-          <IngredientsList cocktail={modalData} />
-          <p>{modalData?.strInstructions}</p>
-        </Box>}
+        {modalData && (
+          <Box sx={style}>
+            <h2>Name: {modalData.strDrink}</h2>
+            <img src={modalData.strDrinkThumb} width="200" />
+            {/* prop is cocktail, using modalData*/}
+            <IngredientsList cocktail={modalData} />
+            <p>{modalData.strInstructions}</p>
+          </Box>
+        )}
       </Modal>
     </div>
   );
