@@ -1,20 +1,23 @@
 import CocktailIngredientItem from "./CocktailIngredientItem";
 
 function IngredientsList({ cocktail }) {
-  return (
-    <ul className="ingredientList">
-      {Object.keys(cocktail).map((key) => {
-        if (key.startsWith("strIngredient") && cocktail[key]) {
-          // console.log(cocktail[key]);
-          console.log("string");
-          return (
-            <CocktailIngredientItem key={key} ingredient={cocktail[key]} />
-          );
-        }
-        return null;
-      })}
-    </ul>
-  );
+  const ingredients = Object.keys(cocktail)
+    .filter((key) => key.startsWith("strIngredient"))
+    .filter((key) => cocktail[key])//rmv null ingredients
+    .map((key, idx) => {
+      // keys of the cocktail object for the measurements are named with a numeric suffix starting from 1 (strMeasure1), not 0
+      const measurement = cocktail[`strMeasure${idx + 1}`];
+      return (
+        <CocktailIngredientItem
+          key={key}
+          ingredient={cocktail[key]}
+          // add in measurement
+          measurement={measurement}
+        />
+      );
+    });
+
+  return <ul className="ingredientList">{ingredients}</ul>;
 }
 
 export default IngredientsList;
