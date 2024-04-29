@@ -1,11 +1,11 @@
 import.meta.env.VITE_AIRTABLE_API_KEY;
 import { useState, useEffect } from "react";
 
-function Cocktail({ cocktail }) {
+function Cocktail({ cocktail, handleOpen }) {
   //state for whether a drink is favourited
   const [isFavourited, setIsFavourited] = useState({});
   console.log(isFavourited);
-
+  console.log(handleOpen);
   const postAirtable = async () => {
     const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201`;
     const dataObj = {
@@ -58,7 +58,7 @@ function Cocktail({ cocktail }) {
   return (
     <div>
       <h2>Name: {cocktail.strDrink}</h2>
-      <img src={cocktail.strDrinkThumb} width="300" />
+      <img src={cocktail.strDrinkThumb} width="300" onClick={handleOpen} />
       <p>{cocktail.strInstructions}</p>
       <br />
       {/* ternary operator: is it fav-ed? if true, return star. else(:), return Fav button */}

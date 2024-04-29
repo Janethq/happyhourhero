@@ -43,8 +43,8 @@ function Search() {
         </form>
         <ul>
           {cocktails.map((cocktail) => (
-            <div onClick={handleOpen} key={cocktail.idDrink}>
-              <Cocktail cocktail={cocktail} />
+            <div key={cocktail.idDrink}>
+              <Cocktail cocktail={cocktail} handleOpen={handleOpen} />
             </div>
           ))}
         </ul>
