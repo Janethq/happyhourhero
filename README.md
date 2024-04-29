@@ -26,7 +26,7 @@ Overtime, users end up with a list of cocktails of their liking!
 
 ### WireFrame in [Figma](https://www.figma.com/file/FWtpHUGTqsCVNScHibEzm5/Project-2%3A-HappyHourHero?type=whiteboard&node-id=92%3A7732&t=jPWZCNCRfOW0UccR-1) 
 
-./screenshots/wireframe.png
+screenshots/wireframe.png
 
 
 ## Code
@@ -36,26 +36,26 @@ Overtime, users end up with a list of cocktails of their liking!
 Cocktail API Site: [CocktailDB](https://www.thecocktaildb.com/api.php)
 
 1. [Random Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/random.php)
-./screenshots/randomapi.png
+screenshots/randomapi.png
 
 
 2. [Search Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka)
-./screenshots/ingredientSearch.png
+screenshots/ingredientSearch.png
 
 ### Favourite API call
 
 
 ### Favourite React Component
-./screenshots/favComponent.png
+screenshots/favComponent.png
 
 ### Routing Component
-./screenshots/routing1.png
-./screenshots/routing2.png
+screenshots/routing1.png
+screenshots/routing2.png
 
 
 ### CRUD with Airtable
 - Airtable
-./screenshots/airtable.png
+screenshots/airtable.png
 
 - Create in Daily.jsx
 ```javascript
