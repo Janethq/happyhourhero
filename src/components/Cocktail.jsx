@@ -1,7 +1,7 @@
 import.meta.env.VITE_AIRTABLE_API_KEY;
 import { useState, useEffect } from "react";
 
-function Cocktail({ cocktail, handleOpen }) {
+function Cocktail({ cocktail, handleOpen, setModalData}) {
   //state for whether a drink is favourited
   const [isFavourited, setIsFavourited] = useState({});
   console.log(isFavourited);
@@ -55,10 +55,16 @@ function Cocktail({ cocktail, handleOpen }) {
     fetchFav();
   }, [cocktail.idDrink]);
 
+  const handleClick = ()=>{
+    handleOpen()
+    //pass in cocktail for specific cocktail data
+    setModalData(cocktail)
+  }
+
   return (
     <div>
       <h2>Name: {cocktail.strDrink}</h2>
-      <img src={cocktail.strDrinkThumb} width="300" onClick={handleOpen} />
+      <img src={cocktail.strDrinkThumb} width="300" onClick={handleClick} />
       <p>{cocktail.strInstructions}</p>
       <br />
       {/* ternary operator: is it fav-ed? if true, return star. else(:), return Fav button */}

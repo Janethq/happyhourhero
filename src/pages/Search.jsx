@@ -11,6 +11,8 @@ function Search() {
   const [ingredient, setIngredient] = useState("");
   //find the cocktails
   const [cocktails, setCocktails] = useState([]);
+
+  const [modalData, setModalData] = useState({});
   const fetchData = async (e) => {
     e.preventDefault();
     console.log("fetchData");
@@ -44,12 +46,21 @@ function Search() {
         <ul>
           {cocktails.map((cocktail) => (
             <div key={cocktail.idDrink}>
-              <Cocktail cocktail={cocktail} handleOpen={handleOpen} />
+              <Cocktail
+                cocktail={cocktail}
+                handleOpen={handleOpen}
+                setModalData={setModalData}
+              />
             </div>
           ))}
         </ul>
       </div>
-      <ModalComponent open={open} setOpen={setOpen} />
+      <ModalComponent
+        open={open}
+        setOpen={setOpen}
+        modalData={modalData}
+        setModalData={setModalData}
+      />
     </>
   );
 }
