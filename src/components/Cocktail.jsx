@@ -1,7 +1,7 @@
 import.meta.env.VITE_AIRTABLE_API_KEY;
 import { useState, useEffect } from "react";
 
-function Cocktail({ cocktail, handleOpen, setModalData}) {
+function Cocktail({ cocktail, handleOpen, setModalData }) {
   //state for whether a drink is favourited
   const [isFavourited, setIsFavourited] = useState({});
   const postAirtable = async () => {
@@ -53,11 +53,11 @@ function Cocktail({ cocktail, handleOpen, setModalData}) {
     fetchFav();
   }, [cocktail.idDrink]);
 
-  const handleClick = ()=>{
-    handleOpen()
+  const handleClick = () => {
+    handleOpen();
     //pass in cocktail for specific cocktail data
-    setModalData(cocktail)
-  }
+    setModalData(cocktail);
+  };
 
   return (
     <div>
