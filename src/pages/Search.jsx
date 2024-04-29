@@ -13,6 +13,7 @@ function Search() {
   const [cocktails, setCocktails] = useState([]);
 
   const [modalData, setModalData] = useState({});
+  
   const fetchData = async (e) => {
     e.preventDefault();
     console.log("fetchData");

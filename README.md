@@ -15,11 +15,23 @@ Overtime, users end up with a list of cocktails of their liking!
 
 ### Screenshots
 
+- Random cocktail
+<img src="screenshots/randompg.png"/>
+
+- Favourite list
+<img src="screenshots/fav.png"/>
+
+- Search page
+<img src="screenshots/search.png"/>
+
 ### Try it for yourself
 
 [Discover cocktails at Happy Hour Hero](https://happyhourhero.vercel.app/)
 
 ## Planning
+
+### Project Time Frame
+1.5 weeks
 
 ### IceBox, Current / MVP, Completed
 [Trello Board](https://trello.com/b/fcRCbQos/my-trello-board)
@@ -43,7 +55,7 @@ Cocktail API Site: [CocktailDB](https://www.thecocktaildb.com/api.php)
 <img src="screenshots/ingredientSearch.png"/>
 
 ### Favourite API call
-
+<img src="screenshots/favApiCall.png"/>
 
 ### Favourite React Component
 <img src="screenshots/favComponent.png"/>
@@ -152,7 +164,16 @@ Cocktail API Site: [CocktailDB](https://www.thecocktaildb.com/api.php)
 
 ### Biggest Challenge
 
-### Key Takeaway
+Displaying ingredient measurements with the ingredients. Due to the API seperating the two values, I had to figure out a way to display both of them inline together as a single list item.
+
+<img src="screenshots/challenge.png"/>
+
+### Key Takeaways
+
+- More familiar working with API and the different ways that I could utlise them
+- I also understood the reasoning behind reusable components
+- Learnt how to use the Airtable with CRUD methods
+- Dipped my toes into the world of Material UI
 
 ### Technologies Used
 - JS, HTML, CSS 
@@ -162,3 +183,7 @@ Cocktail API Site: [CocktailDB](https://www.thecocktaildb.com/api.php)
 - Vercel
 
 ### Next Steps
+- Loading states
+- Display more details for each cocktail
+- Search function via Category
+

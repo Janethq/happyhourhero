@@ -46,13 +46,16 @@ function Favourites() {
   return (
     <>
       <div>
+        <h2>Favourites</h2>
         {favouritesList.map((item) => (
           <div key={item.id}>
             <h2>{item.fields.name}</h2>
-            <img src={item.fields.cocktailImg} width="350"/>
+            <img src={item.fields.cocktailImg} width="350" />
             <br />
             {/* anon function to remove whatever is passed in which is item.fields.recordID */}
-            <button onClick={() => rmvFav(item.fields.recordID)}>❌ Remove</button>
+            <button onClick={() => rmvFav(item.fields.recordID)}>
+              ❌ Remove
+            </button>
           </div>
         ))}
       </div>
