@@ -15,42 +15,139 @@ Overtime, users end up with a list of cocktails of their liking!
 
 ### Screenshots
 
-### See it for yourself
+### Try it for yourself
 
 [Discover cocktails at Happy Hour Hero](https://happyhourhero.vercel.app/)
 
 ## Planning
 
-### Trello: IceBox, Current / MVP, Completed
+### IceBox, Current / MVP, Completed
+[Trello Board](https://trello.com/b/fcRCbQos/my-trello-board)
 
-### WireFrame in Figma 
+### WireFrame in [Figma](https://www.figma.com/file/FWtpHUGTqsCVNScHibEzm5/Project-2%3A-HappyHourHero?type=whiteboard&node-id=92%3A7732&t=jPWZCNCRfOW0UccR-1) 
+
+(./screenshots/wireframe.png)
+
 
 ## Code
 
 ### 3rd Party API
 
-Cocktail API Site [CocktailDB](https://www.thecocktaildb.com/api.php)
+Cocktail API Site: [CocktailDB](https://www.thecocktaildb.com/api.php)
 
 1. [Random Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/random.php)
-show return ss
+(./screenshots/randomapi.png)
+
+
 2. [Search Cocktail API](https://www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka)
-show return ss
+(./screenshots/ingredientSearch.png)
 
 ### Favourite API call
-show fetch ss
+
 
 ### Favourite React Component
-show ss
+(./screenshots/favComponent.png)
 
 ### Routing Component
-show ss
+(./screenshots/routing1.png)
+(./screenshots/routing2.png)
+
 
 ### CRUD with Airtable
+- Airtable
+(./screenshots/airtable.png)
 
-* How to run the program
-* Step-by-step bullets
+- Create in Daily.jsx
+```javascript
+  const postAirtable = async () => {
+    const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201`;
+    const dataObj = {
+      fields: {
+        name: cocktail.strDrink,
+        cocktailId: cocktail.idDrink,
+        cocktailImg: cocktail.strDrinkThumb,
+      },
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+      },
+      body: JSON.stringify(dataObj),
+    };
+    const response = await fetch(url, options);
+    const postResponse = await response.json();
+    console.log(postResponse);
+  };
 ```
-code blocks for commands
+- Read in Favourites.jsx
+```javascript
+  const fetchAirtable = async () => {
+    const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201`;
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+      },
+    };
+    const response = await fetch(url, options);
+    const airtableResponse = await response.json();
+    console.log(airtableResponse.records);
+    setFavouritesList(airtableResponse.records);
+  };
+
+  useEffect(() => {
+    fetchAirtable();
+  }, []);
+```
+- Update in Daily.jsx
+```javascript
+  useEffect(() => {
+    // fetch the favourited status of the current cocktail from Airtable
+    const fetchFav = async () => {
+      const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201`;
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+        },
+      };
+      const response = await fetch(url, options);
+      const airtableResponse = await response.json();
+      //look for cocktails with the matching id of 'cocktail' prop
+      const record = airtableResponse.records.filter(
+        //returns new array of matching records
+        (record) => record.fields.cocktailId === cocktail.idDrink
+      );
+      // if more than 1 drink
+      if (record.length > 0) {
+        // add on another fav drink to current fav list and set its fav status to true
+        setIsFavourited(true);
+      }
+    };
+    fetchFav();
+  }, [cocktail.idDrink]);
+```
+- Delete in Favourites.jsx
+```javascript
+  const rmvFav = async (recordID) => {
+    const url = `https://api.airtable.com/v0/appmAwZOPe64Evw3t/Table%201/${recordID}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+      },
+    };
+    const response = await fetch(url, options);
+    const airtableResponse = response.json();
+    console.log(airtableResponse);
+    setFavouritesList(
+      //remove those with the ID that is tagged with unfavourited drink
+      favouritesList.filter((item) => item.fields.recordID !== recordID)
+    );
+  };
 ```
 
 ### Biggest Challenge

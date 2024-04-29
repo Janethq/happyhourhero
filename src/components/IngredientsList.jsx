@@ -6,6 +6,7 @@ function IngredientsList({ cocktail }) {
     .filter((key) => cocktail[key])//rmv null ingredients
     .map((key, idx) => {
       // keys of the cocktail object for the measurements are named with a numeric suffix starting from 1 (strMeasure1), not 0
+      //inspo from https://codepen.io/elshaw82/pen/ZEQaWLy
       const measurement = cocktail[`strMeasure${idx + 1}`];
       return (
         <CocktailIngredientItem
